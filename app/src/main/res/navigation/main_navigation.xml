@@ -17,5 +17,9 @@
     <fragment
         android:id="@+id/postFragment"
         android:name="com.example.mysocialmedia.ui.post.PostFragment"
-        android:label="PostFragment" />
+        android:label="PostFragment" >
+        <argument
+            android:name="posts"
+            app:argType="com.example.mysocialmedia.data.model.Post[]" />
+    </fragment>
 </navigation>
