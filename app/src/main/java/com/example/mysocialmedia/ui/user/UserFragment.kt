@@ -40,14 +40,10 @@ class UserFragment(): Fragment() {
                 when(it) {
                     is UserViewState.Success -> {
                         val posts = it.data
-                        val users = posts.map{  post ->
-                            User( post.userId )
-                        }
-                        val uniqueUsers = users.distinctBy {
-                            it.userId
-                        }
+                        val users = viewModel.getUsers(posts)
+                        val uniqueUsers = viewModel.getUniqueUsers(users)
                         userAdapter = UserAdapter(uniqueUsers) { userId ->
-                           val userSpecificPosts = posts.filter { post -> post.userId == userId }
+                           val userSpecificPosts = viewModel.getUserSpecificPosts(posts, userId)
                            val action = UserFragmentDirections.actionUserFragmentToPostFragment(userSpecificPosts.toTypedArray())
                            findNavController().navigate(action)
 
