@@ -23,7 +23,7 @@ class UserAdapter(
         val currentUser = users[position]
         holder.binding.apply {
             tvUserName.text = currentUser.userId.idToName()
-            root.setOnClickListener {
+            cvUser.setOnClickListener {
                 onClick.invoke(currentUser.userId)
             }
         }
